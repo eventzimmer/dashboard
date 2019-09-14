@@ -1,5 +1,5 @@
 import auth0 from 'auth0-js'
-import authConfig from '@/assets/auth_config.json'
+import authConfig from '../assets/auth_config.json'
 
 export const CALLBACK_PATH = '/callback'
 

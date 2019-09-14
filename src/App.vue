@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Login></Login>
   </div>
 </template>
 
 <script>
-import { CALLBACK_PATH } from "@/store/auth"
-import HelloWorld from './components/HelloWorld.vue'
+import { CALLBACK_PATH } from './store/auth'
+import Login from './components/Login.vue'
+import './assets/style.default.css'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Login
   },
   mounted () {
     if (window.location.pathname === CALLBACK_PATH) {
