@@ -1,18 +1,21 @@
 <template>
   <div id="app">
-    <Login></Login>
+    <Login v-if="!$store.getters.authenticated"></Login>
+    <Organizer v-else></Organizer>
   </div>
 </template>
 
 <script>
 import { CALLBACK_PATH } from './store/auth'
 import Login from './components/Login.vue'
+import Organizer from './components/Organizer.vue'
 import './assets/style.default.css'
 
 export default {
   name: 'app',
   components: {
-    Login
+    Login,
+    Organizer
   },
   mounted () {
     if (window.location.pathname === CALLBACK_PATH) {
@@ -25,14 +28,3 @@ export default {
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
