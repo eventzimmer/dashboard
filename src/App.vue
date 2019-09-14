@@ -6,12 +6,22 @@
 </template>
 
 <script>
+import { CALLBACK_PATH } from "@/store/auth"
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  mounted () {
+    if (window.location.pathname === CALLBACK_PATH) {
+      if (!this.$store.getters.authenticated) {
+        this.$store.dispatch('handleAuthentication', {}).then((authResult) => {
+          window.history.pushState(authResult, '', '/') // redirect away from the ugly callback URL
+        })
+      }
+    }
   }
 }
 </script>
