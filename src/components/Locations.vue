@@ -18,33 +18,20 @@
                     </tr>
                 </tbody>
             </table>
-            <!-- TODO: Outsource this logic to be reused by sources -->
-            <nav aria-label="Page navigation example" v-if="locations.length > 10">
-                <ul class="pagination">
-                    <li class="page-item" :class="{ 'disabled': (page === 1) }">
-                        <p class="page-link" aria-label="Previous" @click="paginate(page -1)">
-                            <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only">Previous</span>
-                        </p>
-                    </li>
-                    <li class="page-item" :class="{ 'active': (availablePage === page) }" v-for="availablePage in pages()" :key="availablePage"><p class="page-link" @click="paginate(availablePage)">{{ availablePage }}</p></li>
-                    <li class="page-item" :class="{ 'disabled': (page === pages()) }">
-                        <p class="page-link" aria-label="Next" @click="paginate(page + 1)">
-                            <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only">Next</span>
-                        </p>
-                    </li>
-                </ul>
-            </nav>
+            <Pagination :items="locations" @pageChanged="page = $event"></Pagination>
         </div>
     </div>
 </template>
 
 <script>
-import { ENDPOINT } from "../utils";
+import Pagination from './Pagination.vue'
+import { ENDPOINT } from '../utils';
 
 export default {
   name: "Locations",
+  components: {
+    Pagination
+  },
   data () {
     return {
       page: 1,
@@ -53,12 +40,6 @@ export default {
     }
   },
   methods: {
-    pages () {
-      return Math.floor(this.locations.length / 10)
-    },
-    paginate (page) {
-      this.page = page
-    },
     paginatedLocations () {
       return this.locations.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
     }
