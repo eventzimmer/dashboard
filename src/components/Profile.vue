@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import format from 'date-fns/format'
-import { de } from 'date-fns/locale'
+import format from 'date-fns-new/format'
+import { de } from 'date-fns-new/locale'
 
 export default {
   name: "Profile",

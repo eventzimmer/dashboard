@@ -13,5 +13,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added Profile component
 - added Locations component
 - added Sources component
+- add basic events chart
 
 
