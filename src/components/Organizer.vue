@@ -7,8 +7,13 @@
                         <div class="col-lg-6 mb-2">
                             <Profile></Profile>
                         </div>
+                    </div>
+                    <div class="row mt-4">
                         <div class="col-lg-6 mb-2">
                             <Locations></Locations>
+                        </div>
+                        <div class="col-lg-6 mb-2">
+                            <Sources></Sources>
                         </div>
                     </div>
                 </section>
@@ -33,12 +38,14 @@
 <script>
 import Profile from './Profile.vue'
 import Locations from './Locations.vue'
+import Sources from './Sources.vue'
 
 export default {
   name: "Organizer",
   components: {
     Profile,
-    Locations
+    Locations,
+    Sources
   }
 }
 </script>

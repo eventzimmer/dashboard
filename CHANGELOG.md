@@ -11,5 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added Login page (landing)
 - added Organizer dashboard
 - added Profile component
+- added Locations component
+- added Sources component
 
 
