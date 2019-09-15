@@ -7,6 +7,9 @@
                         <div class="col-lg-6 mb-2">
                             <Profile></Profile>
                         </div>
+                        <div class="col-lg-6 mb-2">
+                            <Locations></Locations>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -29,11 +32,13 @@
 
 <script>
 import Profile from './Profile.vue'
+import Locations from './Locations.vue'
 
 export default {
   name: "Organizer",
   components: {
-    Profile
+    Profile,
+    Locations
   }
 }
 </script>
