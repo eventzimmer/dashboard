@@ -12,7 +12,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="location in paginatedLocations()" :key="location.name">
-                        <th scope="row">{{ location.name }}</th>
+                        <td scope="row">{{ location.name }}</td>
                         <td>{{ location.latitude }}</td>
                         <td>{{ location.longitude }}</td>
                     </tr>

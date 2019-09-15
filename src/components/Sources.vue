@@ -11,7 +11,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="source in paginatedSources()" :key="source.url">
-                    <th scope="row">{{ source.url }}</th>
+                    <td scope="row">{{ source.url }}</td>
                     <td>{{ source.aggregator }}</td>
                 </tr>
                 </tbody>
