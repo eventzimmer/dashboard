@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <Login v-if="!$store.getters.authenticated"></Login>
-    <Organizer v-else></Organizer>
+    <Organizer v-if="$store.getters.authenticated"></Organizer>
+    <div v-else-if="!rootPath()">
+      <!-- Served as a intermediate so the login page will no be displayed when redirected -->
+    </div>
+    <Login v-else></Login>
   </div>
 </template>
 
@@ -16,6 +19,11 @@ export default {
   components: {
     Login,
     Organizer
+  },
+  methods: {
+    rootPath () {
+      return (window.location.pathname === '/')
+    }
   },
   mounted () {
     if (window.location.pathname === CALLBACK_PATH) {
