@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <p class="mt-5 mb-0 text-gray-400 text-center">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400">Bootstrapious</a> & eventzimmer</p>
+            <p class="mt-5 mb-0 text-gray-400 text-center">Design by <a href="https://bootstrapious.com/admin-templates" class="external text-gray-400" target="_blank">Bootstrapious</a> & eventzimmer</p>
         </div>
     </div>
 </template>
