@@ -32,7 +32,7 @@ export default {
   },
   mutations: {
     updateAccessToken(state, token) {
-      state.acceleration = token
+      state.accessToken = token
     },
     updateIdToken(state, token) {
       state.idToken = token

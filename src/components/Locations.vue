@@ -1,7 +1,13 @@
 <template>
     <div class="card">
+        <create-modal></create-modal>
         <div class="card-header">
-            <h6 class="text-uppercase mb-0">Orte</h6>
+            <div class="d-flex align-items-center">
+                <h6 class="text-uppercase mr-auto">Orte</h6>
+                <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#createLocationModal">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
         </div>
         <div class="card-body">
             <table v-if="loaded" class="table card-text table-hover">
@@ -25,12 +31,14 @@
 
 <script>
 import Pagination from './Pagination.vue'
+import CreateModal from './modals/location/Create.vue'
 import { ENDPOINT } from '../utils';
 
 export default {
   name: "Locations",
   components: {
-    Pagination
+    Pagination,
+    CreateModal
   },
   data () {
     return {
