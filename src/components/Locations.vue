@@ -1,6 +1,7 @@
 <template>
     <div class="card">
         <create-modal></create-modal>
+        <delete-modal :name="name"></delete-modal>
         <div class="card-header">
             <div class="d-flex align-items-center">
                 <h6 class="text-uppercase mr-auto">Orte</h6>
@@ -17,7 +18,7 @@
                     <th scope="col">Longitude</th>
                 </thead>
                 <tbody>
-                    <tr v-for="location in paginatedLocations()" :key="location.name">
+                    <tr v-for="location in paginatedLocations()" :key="location.name" @click="deleteModal(location.name)">
                         <td scope="row">{{ location.name }}</td>
                         <td>{{ location.latitude }}</td>
                         <td>{{ location.longitude }}</td>
@@ -32,37 +33,37 @@
 <script>
 import Pagination from './Pagination.vue'
 import CreateModal from './modals/location/Create.vue'
+import DeleteModal from './modals/location/Delete.vue'
 import { ENDPOINT } from '../utils';
 
 export default {
   name: "Locations",
   components: {
     Pagination,
-    CreateModal
+    CreateModal,
+    DeleteModal
   },
   data () {
     return {
+      name: null,
       page: 1,
       locations: [],
       loaded: false
     }
   },
   methods: {
+    deleteModal (name) {
+      this.name = name
+      $('#deleteLocationModal').modal('show') // eslint-disable-line
+    },
     paginatedLocations () {
       return this.locations.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
     }
   },
-  mounted () {
-    let vm = this
-
-    fetch(`${ENDPOINT}/locations`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
-        .then((response) => response.json())
-        .then((locations) => {
-          vm.locations = locations
-        })
-        .finally(() => {
-          vm.loaded = true
-        })
+  async mounted () {
+    const response = await fetch(`${ENDPOINT}/locations`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
+    this.locations = await response.json()
+    this.loaded = true
   }
 }
 </script>
