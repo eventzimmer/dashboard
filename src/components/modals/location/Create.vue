@@ -44,25 +44,19 @@ export default {
     }
   },
   methods: {
-    createLocation () {
-      let vm = this
-      fetch(`${ENDPOINT}/locations`, {
+    async createLocation () {
+      let response = fetch(`${ENDPOINT}/locations`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authentication': `Bearer ${vm.$store.state.auth.accessToken}`
+          'Authentication': `Bearer ${this.$store.state.auth.accessToken}`
         },
-        body: JSON.stringify({
-          name: vm.name,
-          latitude: vm.latitude,
-          longitude: vm.longitude
-        })
-      }).then((response) => {
-        if (response.status === 201) {
-          vm.$emit('createdLocation', vm.data)
-        } // otherwise handle issue
+        body: JSON.stringify(this.$data)
       })
+      if (response.status === 201) {
+        this.$emit('createdLocation', this.$data)
+      }
     }
   }
 }
