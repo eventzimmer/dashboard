@@ -1,7 +1,13 @@
 <template>
     <div class="card">
+        <create-modal></create-modal>
         <div class="card-header">
-            <h6 class="text-uppercase mb-0">Quellen</h6>
+            <div class="d-flex align-items-center">
+                <h6 class="text-uppercase mr-auto">Quellen</h6>
+                <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#createSourceModal">
+                    <i class="fas fa-plus-circle"></i>
+                </button>
+            </div>
         </div>
         <div class="card-body">
             <table v-if="loaded" class="table card-text table-hover">
@@ -22,13 +28,15 @@
 </template>
 
 <script>
+import CreateModal from './modals/source/Create.vue'
 import { ENDPOINT } from "../utils";
 import Pagination from './Pagination.vue'
 
 export default {
   name: "Sources",
   components: {
-    Pagination
+    Pagination,
+    CreateModal
   },
   data () {
     return {
