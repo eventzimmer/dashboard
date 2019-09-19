@@ -1,6 +1,7 @@
 <template>
     <div class="card">
         <create-modal></create-modal>
+        <delete-modal :url="url"></delete-modal>
         <div class="card-header">
             <div class="d-flex align-items-center">
                 <h6 class="text-uppercase mr-auto">Quellen</h6>
@@ -16,7 +17,7 @@
                 <th scope="col">Aggregator</th>
                 </thead>
                 <tbody>
-                <tr v-for="source in paginatedSources()" :key="source.url">
+                <tr v-for="source in paginatedSources()" :key="source.url" @click="deleteModal(source.url)">
                     <td scope="row">{{ source.url }}</td>
                     <td>{{ source.aggregator }}</td>
                 </tr>
@@ -29,23 +30,30 @@
 
 <script>
 import CreateModal from './modals/source/Create.vue'
-import { ENDPOINT } from "../utils";
+import DeleteModal from './modals/source/Delete.vue'
+import { ENDPOINT } from "../utils"
 import Pagination from './Pagination.vue'
 
 export default {
   name: "Sources",
   components: {
+    DeleteModal,
     Pagination,
     CreateModal
   },
   data () {
     return {
+      url: null,
       page: 1,
       sources: [],
       loaded: false
     }
   },
   methods: {
+    deleteModal (url) {
+      this.url = url
+      $('#deleteSourceModal').modal('show') // eslint-disable-line
+    },
     paginatedSources () {
       return this.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
     }
