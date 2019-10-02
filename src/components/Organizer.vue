@@ -7,9 +7,6 @@
                         <div class="col-lg-6 mb-2">
                             <Profile></Profile>
                         </div>
-                        <div class="col-lg-6 mb-2">
-                            <StartsAt></StartsAt>
-                        </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-lg-6 mb-2">
@@ -42,15 +39,13 @@
 import Profile from './Profile.vue'
 import Locations from './Locations.vue'
 import Sources from './Sources.vue'
-import StartsAt from './charts/StartsAt.vue'
 
 export default {
   name: "Organizer",
   components: {
     Profile,
     Locations,
-    Sources,
-    StartsAt
+    Sources
   }
 }
 </script>
