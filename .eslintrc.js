@@ -4,6 +4,7 @@ module.exports = {
     node: true
   },
   'extends': [
+    '@vue/eslint-config-standard',
     'plugin:vue/essential',
     'eslint:recommended'
   ],
