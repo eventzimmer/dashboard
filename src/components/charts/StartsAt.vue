@@ -1,14 +1,19 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <h6 class="text-uppercase mb-0">Veranstaltungen in der nächsten Zeit</h6>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <canvas id="startsAt" class="w-100 w-75"></canvas>
-            </div>
-        </div>
+  <div class="card">
+    <div class="card-header">
+      <h6 class="text-uppercase mb-0">
+        Veranstaltungen in der nächsten Zeit
+      </h6>
     </div>
+    <div class="card-body">
+      <div class="row">
+        <canvas
+          id="startsAt"
+          class="w-100 w-75"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -29,18 +34,6 @@ function Counter(array) {
 
 export default {
   name: 'StartsAt',
-  methods: {
-    prepareData (events) {
-      let event_dates = events.map((event) => event.starts_at)
-      let counter = new Counter(event_dates)
-      return event_dates.map((starts_at) => {
-        return {
-          x: starts_at,
-          y: counter[starts_at]
-        }
-      })
-    }
-  },
   mounted () {
     let vm = this
     fetch(`${ENDPOINT}/events?select=starts_at`)
@@ -82,6 +75,18 @@ export default {
             }
           })
         })
+  },
+  methods: {
+    prepareData (events) {
+      let event_dates = events.map((event) => event.starts_at)
+      let counter = new Counter(event_dates)
+      return event_dates.map((starts_at) => {
+        return {
+          x: starts_at,
+          y: counter[starts_at]
+        }
+      })
+    }
   }
 }
 </script>
