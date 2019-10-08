@@ -55,7 +55,7 @@ export default {
   props: {
     url: {
       type: String,
-      default: '',
+      required: true,
     }
   },
   methods: {
