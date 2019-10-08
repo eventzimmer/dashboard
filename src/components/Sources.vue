@@ -1,31 +1,54 @@
 <template>
-    <div class="card">
-        <create-modal></create-modal>
-        <delete-modal :url="url"></delete-modal>
-        <div class="card-header">
-            <div class="d-flex align-items-center">
-                <h6 class="text-uppercase mr-auto">Quellen</h6>
-                <button type="button" class="btn btn-sm btn-outline-dark" data-toggle="modal" data-target="#createSourceModal">
-                    <i class="fas fa-plus-circle"></i>
-                </button>
-            </div>
-        </div>
-        <div class="card-body">
-            <table v-if="loaded" class="table card-text table-hover">
-                <thead>
-                <th scope="col">URL</th>
-                <th scope="col">Aggregator</th>
-                </thead>
-                <tbody>
-                <tr v-for="source in paginatedSources()" :key="source.url" @click="deleteModal(source.url)">
-                    <td scope="row">{{ source.url }}</td>
-                    <td>{{ source.aggregator }}</td>
-                </tr>
-                </tbody>
-            </table>
-            <Pagination :items="sources" @pageChanged="page = $event"></Pagination>
-        </div>
+  <div class="card">
+    <create-modal />
+    <delete-modal :url="url" />
+    <div class="card-header">
+      <div class="d-flex align-items-center">
+        <h6 class="text-uppercase mr-auto">
+          Quellen
+        </h6>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-dark"
+          data-toggle="modal"
+          data-target="#createSourceModal"
+        >
+          <i class="fas fa-plus-circle" />
+        </button>
+      </div>
     </div>
+    <div class="card-body">
+      <table
+        v-if="loaded"
+        class="table card-text table-hover"
+      >
+        <thead>
+          <th scope="col">
+            URL
+          </th>
+          <th scope="col">
+            Aggregator
+          </th>
+        </thead>
+        <tbody>
+          <tr
+            v-for="source in paginatedSources()"
+            :key="source.url"
+            @click="deleteModal(source.url)"
+          >
+            <td scope="row">
+              {{ source.url }}
+            </td>
+            <td>{{ source.aggregator }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <Pagination
+        :items="sources"
+        @pageChanged="page = $event"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -49,15 +72,6 @@ export default {
       loaded: false
     }
   },
-  methods: {
-    deleteModal (url) {
-      this.url = url
-      $('#deleteSourceModal').modal('show') // eslint-disable-line
-    },
-    paginatedSources () {
-      return this.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
-    }
-  },
   mounted () {
     let vm = this
 
@@ -69,6 +83,15 @@ export default {
         .finally(() => {
           vm.loaded = true
         })
+  },
+  methods: {
+    deleteModal (url) {
+      this.url = url
+      $('#deleteSourceModal').modal('show') // eslint-disable-line
+    },
+    paginatedSources () {
+      return this.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
+    }
   }
 }
 </script>
