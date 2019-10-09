@@ -53,7 +53,7 @@ export default {
   props: {
     name: {
       type: String,
-      required: true,
+      default: null
     }
   },
   methods: {
