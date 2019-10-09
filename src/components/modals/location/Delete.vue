@@ -37,6 +37,7 @@
           <button
             type="button"
             class="btn btn-danger"
+            data-dismiss="modal"
             @click="deleteLocation"
           >
             Löschen
@@ -50,21 +51,15 @@
 <script>
 export default {
   name: "DeleteLocationModal",
-  props: {
-    name: {
-      type: String,
-      default: null
-    }
-  },
   methods: {
     async deleteLocation () {
-      let response = this.$store.getters.fetchDefaults(`/locations?${new URLSearchParams({
-        name: `eq.${this.name}`
+      let response = await this.$store.getters.fetchDefaults(`/locations?${new URLSearchParams({
+        name: `eq.${this.$store.state.selection.locationName}`
       }).toString()}`, {
         method: 'DELETE'
       })
-      if (response.status === 200) {
-        this.$emit('deletedLocation', this.name)
+      if (response.status === 204) {
+        this.$store.commit('deleteLocation', this.$store.state.selection.locationName)
       }
     }
   }

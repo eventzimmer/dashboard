@@ -37,6 +37,7 @@
           <button
             type="button"
             class="btn btn-danger"
+            data-dismiss="modal"
             @click="deleteSource"
           >
             Löschen
@@ -50,21 +51,15 @@
 <script>
 export default {
   name: "Delete",
-  props: {
-    url: {
-      type: String,
-      default: null
-    }
-  },
   methods: {
     async deleteSource () {
-      let response = this.$store.getters.fetchDefaults(`/sources?${new URLSearchParams({
-        url: `eq.${this.url}`
+      let response = await this.$store.getters.fetchDefaults(`/sources?${new URLSearchParams({
+        url: `eq.${this.$store.state.selection.url}`
       }).toString()}`, {
         method: 'DELETE'
       })
-      if (response.status === 200) {
-        this.$emit('deletedSource', this.url)
+      if (response.status === 204) {
+        this.$store.commit('deleteSource', this.$store.state.selection.url)
       }
     }
   }

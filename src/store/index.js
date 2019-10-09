@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
+import selection from './selection'
 
 Vue.use(Vuex)
 
@@ -13,20 +14,18 @@ export default new Vuex.Store({
     addLocations (state, locations) {
       state.locations.unshift(...locations)
     },
-    deleteLocation (state, location) {
-      state.locations = state.locations.filter((l) => l !== location)
+    deleteLocation (state, name) {
+      state.locations = state.locations.filter((l) => l.name !== name)
     },
     addSources (state, sources) {
       state.sources.unshift(...sources)
     },
-    deleteSource (state, source) {
-      state.sources = state.sources.filter((s) => s !== source)
+    deleteSource (state, url) {
+      state.sources = state.sources.filter((s) => s.url !== url)
     }
   },
-  actions: {
-
-  },
   modules: {
-    auth
+    auth,
+    selection
   }
 })

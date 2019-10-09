@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <create-modal />
-    <delete-modal :url="url" />
+    <delete-modal />
     <div class="card-header">
       <div class="d-flex align-items-center">
         <h6 class="text-uppercase mr-auto">
@@ -66,7 +66,6 @@ export default {
   },
   data () {
     return {
-      url: null,
       page: 1,
       loaded: false
     }
@@ -79,7 +78,7 @@ export default {
   },
   methods: {
     deleteModal (url) {
-      this.url = url
+      this.$store.commit('updateSourceURL', url)
       $('#deleteSourceModal').modal('show') // eslint-disable-line
     },
     paginatedSources () {

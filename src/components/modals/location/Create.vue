@@ -67,8 +67,8 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="createLocation"
             data-dismiss="modal"
+            @click="createLocation"
           >
             Speichern
           </button>
@@ -100,7 +100,7 @@ export default {
         body: JSON.stringify(this.$data)
       })
       if (response.status === 201) {
-        this.$store.commit('addLocations', [this.$data])
+        this.$store.commit('addLocations', [Object.assign({}, this.$data)])
       }
     }
   }

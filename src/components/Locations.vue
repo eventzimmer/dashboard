@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <create-modal />
-    <delete-modal :name="name" />
+    <delete-modal />
     <div class="card-header">
       <div class="d-flex align-items-center">
         <h6 class="text-uppercase mr-auto">
@@ -70,7 +70,6 @@ export default {
   },
   data () {
     return {
-      name: null,
       page: 1,
       loaded: false
     }
@@ -83,7 +82,7 @@ export default {
   },
   methods: {
     deleteModal (name) {
-      this.name = name
+      this.$store.commit('updateLocationName', name)
       $('#deleteLocationModal').modal('show') // eslint-disable-line
     },
     paginatedLocations () {

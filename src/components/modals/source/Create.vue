@@ -45,8 +45,8 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="createSource"
             data-dismiss="modal"
+            @click="createSource"
           >
             Speichern
           </button>
@@ -77,7 +77,7 @@ export default {
         body: JSON.stringify(this.$data)
       })
       if (response.status === 201) {
-        this.$store.commit('addSources', [this.$data])
+        this.$store.commit('addSources', [Object.assign({}, this.$data)])
       }
     }
   }

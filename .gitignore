@@ -92,3 +92,7 @@ dist/
 
 # webstorm
 .idea/
+
+# OSX stuff
+.DS_Store
+
