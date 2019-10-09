@@ -46,6 +46,7 @@
             type="button"
             class="btn btn-primary"
             @click="createSource"
+            data-dismiss="modal"
           >
             Speichern
           </button>
@@ -66,7 +67,7 @@ export default {
   },
   methods: {
     async createSource() {
-      let response = this.$store.getters.fetchDefaults(`/sources`, {
+      let response = await this.$store.getters.fetchDefaults(`/sources`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -76,7 +77,7 @@ export default {
         body: JSON.stringify(this.$data)
       })
       if (response.status === 201) {
-        this.$emit('createdSource', this.$data)
+        this.$store.commit('addSources', [this.$data])
       }
     }
   }

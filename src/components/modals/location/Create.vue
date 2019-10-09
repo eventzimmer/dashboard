@@ -68,6 +68,7 @@
             type="button"
             class="btn btn-primary"
             @click="createLocation"
+            data-dismiss="modal"
           >
             Speichern
           </button>
@@ -89,7 +90,7 @@ export default {
   },
   methods: {
     async createLocation () {
-      let response = this.$store.getters.fetchDefaults(`/locations`, {
+      let response = await this.$store.getters.fetchDefaults(`/locations`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -99,7 +100,7 @@ export default {
         body: JSON.stringify(this.$data)
       })
       if (response.status === 201) {
-        this.$emit('createdLocation', this.$data)
+        this.$store.commit('addLocations', [this.$data])
       }
     }
   }

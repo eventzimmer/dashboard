@@ -54,7 +54,7 @@
 <script>
 import CreateModal from './modals/source/Create.vue'
 import DeleteModal from './modals/source/Delete.vue'
-import { ENDPOINT } from "../utils"
+import { ENDPOINT } from '../utils'
 import Pagination from './Pagination.vue'
 
 export default {
@@ -83,7 +83,7 @@ export default {
       $('#deleteSourceModal').modal('show') // eslint-disable-line
     },
     paginatedSources () {
-      return this.$store.state.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
+      return this.$store.state.sources.slice((this.page - 1) * 10, this.page * 10)
     }
   }
 }

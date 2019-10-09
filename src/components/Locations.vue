@@ -87,7 +87,7 @@ export default {
       $('#deleteLocationModal').modal('show') // eslint-disable-line
     },
     paginatedLocations () {
-      return this.$store.state.locations.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
+      return this.$store.state.locations.slice((this.page - 1) * 10, this.page * 10)
     }
   }
 }

@@ -11,13 +11,13 @@ export default new Vuex.Store({
   },
   mutations: {
     addLocations (state, locations) {
-      state.locations.push(...locations)
+      state.locations.unshift(...locations)
     },
     deleteLocation (state, location) {
       state.locations = state.locations.filter((l) => l !== location)
     },
     addSources (state, sources) {
-      state.sources.push(...sources)
+      state.sources.unshift(...sources)
     },
     deleteSource (state, source) {
       state.sources = state.sources.filter((s) => s !== source)

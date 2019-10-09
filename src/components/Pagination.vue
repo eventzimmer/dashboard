@@ -1,7 +1,6 @@
 <template>
   <nav
-    v-if="items.length > 10"
-    aria-label="Page navigation example"
+    aria-label="Page navigation"
   >
     <ul class="pagination">
       <li
@@ -63,7 +62,7 @@ export default {
   },
   methods: {
     pages () {
-      return Math.floor(this.items.length / 10)
+      return Math.ceil(this.items.length / 10)
     },
     paginate (page) {
       this.page = page
