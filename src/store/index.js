@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import auth from './auth'
 import selection from './selection'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex)
 
@@ -27,5 +28,8 @@ export default new Vuex.Store({
   modules: {
     auth,
     selection
-  }
+  },
+  plugins: [createPersistedState({
+    paths: ['auth']
+  })]
 })

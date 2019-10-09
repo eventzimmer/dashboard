@@ -20,12 +20,18 @@ export default {
     Login,
     Organizer
   },
-  mounted () {
+  async mounted () {
     if (window.location.pathname === CALLBACK_PATH) {
+      let authResult = null
       if (!this.$store.getters.authenticated) {
-        this.$store.dispatch('handleAuthentication', {}).then((authResult) => {
-          window.history.pushState(authResult, '', '/') // redirect away from the ugly callback URL
-        })
+        authResult = await this.$store.dispatch('handleAuthentication')
+        window.history.pushState(authResult, '', '/') // redirect away from the ugly callback URL
+      } else if (this.$store.getters.initialized) {
+        authResult = await this.$store.dispatch('renewTokens')
+      }
+
+      if (authResult) {
+        window.history.pushState(authResult, '', '/') // redirect away from the ugly callback URL
       }
     }
   },

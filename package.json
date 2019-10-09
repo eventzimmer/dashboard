@@ -17,7 +17,8 @@
     "fetch-defaults": "^1.0.0",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.10",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persistedstate": "^2.5.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
