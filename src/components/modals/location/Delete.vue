@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import { ENDPOINT } from '../../../utils.js';
-
 export default {
   name: "DeleteLocationModal",
   props: {
@@ -60,7 +58,7 @@ export default {
   },
   methods: {
     async deleteLocation () {
-      let response = fetch(`${ENDPOINT}/locations?${new URLSearchParams({
+      let response = this.$store.getters.fetchDefaults(`/locations?${new URLSearchParams({
         name: `eq.${this.name}`
       }).toString()}`, {
         method: 'DELETE'

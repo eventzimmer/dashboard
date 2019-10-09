@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import { ENDPOINT } from "../../../utils";
-
 export default {
   name: "Delete",
   props: {
@@ -60,7 +58,7 @@ export default {
   },
   methods: {
     async deleteSource () {
-      let response = fetch(`${ENDPOINT}/sources?${new URLSearchParams({
+      let response = this.$store.getters.fetchDefaults(`/sources?${new URLSearchParams({
         url: `eq.${this.url}`
       }).toString()}`, {
         method: 'DELETE'

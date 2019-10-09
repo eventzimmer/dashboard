@@ -1,5 +1,8 @@
 import auth0 from 'auth0-js'
 import authConfig from '../assets/auth_config.json'
+import { ENDPOINT } from '../utils';
+
+const fetchDefaults = require('fetch-defaults')
 
 export const CALLBACK_PATH = '/callback'
 
@@ -28,6 +31,13 @@ export default {
     },
     authenticated(state, getters) {
       return (getters.initialized && (new Date() < getters.tokenExpiry))
+    },
+    fetchDefaults(state, getters) {
+      return (getters.authenticated) ? fetchDefaults(fetch, ENDPOINT, {
+        headers: {
+          Authorization: `Bearer ${state.accessToken}`
+        }
+      }): null
     }
   },
   mutations: {

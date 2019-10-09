@@ -78,8 +78,6 @@
 </template>
 
 <script>
-import { ENDPOINT } from '../../../utils';
-
 export default {
   name: "CreateLocationModal",
   data () {
@@ -91,7 +89,7 @@ export default {
   },
   methods: {
     async createLocation () {
-      let response = fetch(`${ENDPOINT}/locations`, {
+      let response = this.$store.getters.fetchDefaults(`/locations`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

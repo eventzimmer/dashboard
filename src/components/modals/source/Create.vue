@@ -56,8 +56,6 @@
 </template>
 
 <script>
-import { ENDPOINT } from "../../../utils";
-
 export default {
   name: "CreateSourceModal",
   data () {
@@ -68,7 +66,7 @@ export default {
   },
   methods: {
     async createSource() {
-      let response = fetch(`${ENDPOINT}/sources`, {
+      let response = this.$store.getters.fetchDefaults(`/sources`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
