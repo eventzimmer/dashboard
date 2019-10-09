@@ -6,10 +6,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    locations: [],
+    sources: []
   },
   mutations: {
-
+    addLocations (state, locations) {
+      state.locations.push(...locations)
+    },
+    deleteLocation (state, location) {
+      state.locations = state.locations.filter((l) => l !== location)
+    },
+    addSources (state, sources) {
+      state.sources.push(...sources)
+    },
+    deleteSource (state, source) {
+      state.sources = state.sources.filter((s) => s !== source)
+    }
   },
   actions: {
 

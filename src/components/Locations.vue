@@ -48,7 +48,7 @@
         </tbody>
       </table>
       <Pagination
-        :items="locations"
+        :items="this.$store.state.locations"
         @pageChanged="page = $event"
       />
     </div>
@@ -72,13 +72,13 @@ export default {
     return {
       name: null,
       page: 1,
-      locations: [],
       loaded: false
     }
   },
   async mounted () {
     const response = await fetch(`${ENDPOINT}/locations`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
-    this.locations = await response.json()
+    let locations = await response.json()
+    this.$store.commit('addLocations', locations)
     this.loaded = true
   },
   methods: {
@@ -87,7 +87,7 @@ export default {
       $('#deleteLocationModal').modal('show') // eslint-disable-line
     },
     paginatedLocations () {
-      return this.locations.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
+      return this.$store.state.locations.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
     }
   }
 }

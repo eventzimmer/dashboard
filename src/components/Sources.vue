@@ -44,7 +44,7 @@
         </tbody>
       </table>
       <Pagination
-        :items="sources"
+        :items="$store.state.sources"
         @pageChanged="page = $event"
       />
     </div>
@@ -68,21 +68,14 @@ export default {
     return {
       url: null,
       page: 1,
-      sources: [],
       loaded: false
     }
   },
-  mounted () {
-    let vm = this
-
-    fetch(`${ENDPOINT}/sources`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
-        .then((response) => response.json())
-        .then((sources) => {
-          vm.sources = sources
-        })
-        .finally(() => {
-          vm.loaded = true
-        })
+  async mounted () {
+    let response = await fetch(`${ENDPOINT}/sources`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
+    let sources = await response.json()
+    this.$store.commit('addSources', sources)
+    this.loaded = true
   },
   methods: {
     deleteModal (url) {
@@ -90,7 +83,7 @@ export default {
       $('#deleteSourceModal').modal('show') // eslint-disable-line
     },
     paginatedSources () {
-      return this.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
+      return this.$store.state.sources.slice((1 + (10 * (this.page - 1))), 10 * (this.page))
     }
   }
 }
