@@ -52,8 +52,8 @@
 </template>
 
 <script>
-import CreateModal from './modals/source/Create.vue'
-import DeleteModal from './modals/source/Delete.vue'
+import CreateModal from './modals/source/CreateSource.vue'
+import DeleteModal from './modals/source/DeleteSource.vue'
 import { ENDPOINT } from '../utils'
 import Pagination from './Pagination.vue'
 

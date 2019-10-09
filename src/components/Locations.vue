@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <create-modal />
+    <create-modal v-if="loaded"/>
     <delete-modal v-if="$store.state.selection.locationName" />
     <div class="card-header">
       <div class="d-flex align-items-center">
@@ -57,8 +57,8 @@
 
 <script>
 import Pagination from './Pagination.vue'
-import CreateModal from './modals/location/Create.vue'
-import DeleteModal from './modals/location/Delete.vue'
+import CreateModal from './modals/location/CreateLocation.vue'
+import DeleteModal from './modals/location/DeleteLocation.vue'
 import { ENDPOINT } from '../utils';
 
 export default {

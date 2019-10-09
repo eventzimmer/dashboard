@@ -24,37 +24,42 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label class="form-control-label text-uppercase">Name</label>
-            <input
-              v-model="name"
-              type="text"
-              placeholder="Ort27"
-              class="form-control"
-            >
-          </div>
-          <div class="form-group">
-            <label class="form-control-label text-uppercase">Latitude</label>
-            <input
-              v-model="latitude"
-              type="number"
-              min="-90"
-              max="90"
-              step="0.1"
-              class="form-control"
-            >
-          </div>
-          <div class="form-group">
-            <label class="form-control-label text-uppercase">Longitude</label>
-            <input
-              v-model="longitude"
-              type="number"
-              min="-180"
-              max="180"
-              step="0.1"
-              class="form-control"
-            >
-          </div>
+          <form>
+            <div class="form-group">
+              <label class="form-control-label text-uppercase">Name</label>
+              <input
+                v-model="name"
+                type="text"
+                placeholder="Ort27"
+                class="form-control"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label class="form-control-label text-uppercase">Latitude</label>
+              <input
+                v-model="latitude"
+                type="number"
+                min="-90"
+                max="90"
+                step="0.1"
+                class="form-control"
+                required
+              >
+            </div>
+            <div class="form-group">
+              <label class="form-control-label text-uppercase">Longitude</label>
+              <input
+                v-model="longitude"
+                type="number"
+                min="-180"
+                max="180"
+                step="0.1"
+                class="form-control"
+                required
+              >
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button
@@ -65,9 +70,11 @@
             Abbrechen
           </button>
           <button
+            v-if="$el"
             type="button"
             class="btn btn-primary"
             data-dismiss="modal"
+            :disabled="!valid()"
             @click="createLocation"
           >
             Speichern
@@ -89,6 +96,9 @@ export default {
     }
   },
   methods: {
+    valid () {
+      return this.$el.getElementsByTagName('form')[0].checkValidity()
+    },
     async createLocation () {
       let response = await this.$store.getters.fetchDefaults(`/locations`, {
         method: 'POST',
