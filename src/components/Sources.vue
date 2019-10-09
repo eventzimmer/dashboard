@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <create-modal />
-    <delete-modal />
+    <delete-modal v-if="$store.state.selection.sourceURL" />
     <div class="card-header">
       <div class="d-flex align-items-center">
         <h6 class="text-uppercase mr-auto">

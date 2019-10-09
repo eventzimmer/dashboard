@@ -33,6 +33,21 @@
               class="form-control"
             >
           </div>
+          <div class="form-group">
+            <label class="form-control-label text-uppercase">Aggregator</label>
+            <select
+              v-model="aggregator"
+              class="form-control"
+            >
+              <option
+                v-for="agg in aggregators()"
+                :key="agg"
+                :value="agg"
+              >
+                {{ agg }}
+              </option>
+            </select>
+          </div>
         </div>
         <div class="modal-footer">
           <button
@@ -62,10 +77,13 @@ export default {
   data () {
     return {
       url: null,
-      aggregator: 'iCal'
+      aggregator: null
     }
   },
   methods: {
+    aggregators () {
+      return ['iCal', 'Facebook']
+    },
     async createSource() {
       let response = await this.$store.getters.fetchDefaults(`/sources`, {
         method: 'POST',
