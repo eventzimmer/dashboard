@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <create-modal v-if="loaded"/>
+    <create-modal />
     <delete-modal v-if="$store.state.selection.locationName" />
     <div class="card-header">
       <div class="d-flex align-items-center">
