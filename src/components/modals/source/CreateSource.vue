@@ -24,30 +24,34 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group">
-            <label class="form-control-label text-uppercase">Url</label>
-            <input
-              v-model="url"
-              type="text"
-              placeholder="Ort27"
-              class="form-control"
-            >
-          </div>
-          <div class="form-group">
-            <label class="form-control-label text-uppercase">Aggregator</label>
-            <select
-              v-model="aggregator"
-              class="form-control"
-            >
-              <option
-                v-for="agg in aggregators()"
-                :key="agg"
-                :value="agg"
+          <form>
+            <div class="form-group">
+              <label class="form-control-label text-uppercase">Url</label>
+              <input
+                v-model="url"
+                type="text"
+                placeholder="Ort27"
+                class="form-control"
+                required
               >
-                {{ agg }}
-              </option>
-            </select>
-          </div>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label text-uppercase">Aggregator</label>
+              <select
+                v-model="aggregator"
+                class="form-control"
+                required
+              >
+                <option
+                  v-for="agg in aggregators()"
+                  :key="agg"
+                  :value="agg"
+                >
+                  {{ agg }}
+                </option>
+              </select>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button
@@ -58,9 +62,11 @@
             Abbrechen
           </button>
           <button
+            v-if="$el"
             type="button"
             class="btn btn-primary"
             data-dismiss="modal"
+            :disabled="!valid()"
             @click="createSource"
           >
             Speichern
@@ -81,6 +87,9 @@ export default {
     }
   },
   methods: {
+    valid () {
+      return this.$el.getElementsByTagName('form')[0].checkValidity()
+    },
     aggregators () {
       return ['iCal', 'Facebook']
     },
