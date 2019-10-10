@@ -12,7 +12,6 @@
 import { CALLBACK_PATH } from './store/auth'
 import Login from './components/Login.vue'
 import Organizer from './components/Organizer.vue'
-import './assets/style.default.css'
 
 export default {
   name: 'App',

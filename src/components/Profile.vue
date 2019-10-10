@@ -10,7 +10,7 @@
           class="btn btn-sm btn-outline-dark"
           @click="$store.dispatch('logout')"
         >
-          <i class="fas fa-sign-out-alt"></i>
+          <i class="fas fa-sign-out-alt" />
         </button>
       </div>
     </div>

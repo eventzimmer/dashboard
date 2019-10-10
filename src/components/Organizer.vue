@@ -40,7 +40,12 @@
                 class="external text-gray-500"
                 target="_blank"
               >Datenschutz
-              </a>
+              </a> |
+              <a
+                href="/faq.html"
+                class="external text-gray-500"
+                target="_blank"
+              >FAQ</a>
             </p>
           </div>
           <div class="col-md-6 text-center text-md-right text-gray-400">
