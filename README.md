@@ -1,5 +1,7 @@
 # dashboard
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f7bf6221-3f0b-4f52-91e7-ae62094d0d0e/deploy-status)](https://app.netlify.com/sites/eventzimmer-dashboard/deploys)
+
 The `dashboard` repository contains all source code for the website displayed at [dashboard.eventzimmer.de](https://dashboard.eventzimmer.de).
 
 It is used to manage organization of `locations`, `sources` and `events`.
