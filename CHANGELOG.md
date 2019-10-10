@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- added Netlify deploy and rewrite
 - add persistent login and renew
 - add logout button
 - added Auth0 redirect-based login
