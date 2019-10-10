@@ -29,7 +29,18 @@
                 href="https://eventzimmer.de"
                 class="external text-gray-500"
                 target="_blank"
-              >eventzimmer</a> &copy; 2019
+              >eventzimmer</a> &copy; 2019 |
+              <a
+                href="https://eventzimmer.de/impressum.html"
+                class="external text-gray-500"
+                target="_blank"
+              >Impressum</a> |
+              <a
+                href="https://eventzimmer.de/datenschutz.html"
+                class="external text-gray-500"
+                target="_blank"
+              >Datenschutz
+              </a>
             </p>
           </div>
           <div class="col-md-6 text-center text-md-right text-gray-400">

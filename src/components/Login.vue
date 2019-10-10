@@ -37,7 +37,18 @@
           href="https://bootstrapious.com/admin-templates"
           class="external text-gray-400"
           target="_blank"
-        >Bootstrapious</a> & eventzimmer
+        >Bootstrapious</a> |
+        <a
+          href="https://eventzimmer.de/impressum.html"
+          class="external text-gray-400"
+          target="_blank"
+        >Impressum</a> |
+        <a
+          href="https://eventzimmer.de/datenschutz.html"
+          class="external text-gray-400"
+          target="_blank"
+        >Datenschutz
+        </a>
       </p>
     </div>
   </div>
