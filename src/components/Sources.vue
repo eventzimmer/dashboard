@@ -54,7 +54,6 @@
 <script>
 import CreateModal from './modals/source/CreateSource.vue'
 import DeleteModal from './modals/source/DeleteSource.vue'
-import { ENDPOINT } from '../utils'
 import Pagination from './Pagination.vue'
 
 export default {
@@ -71,7 +70,7 @@ export default {
     }
   },
   async mounted () {
-    let response = await fetch(`${ENDPOINT}/sources`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
+    let response = await this.$store.getters.fetchDefaults('/sources_by_owner')
     let sources = await response.json()
     this.$store.commit('addSources', sources)
     this.loaded = true

@@ -59,7 +59,6 @@
 import Pagination from './Pagination.vue'
 import CreateModal from './modals/location/CreateLocation.vue'
 import DeleteModal from './modals/location/DeleteLocation.vue'
-import { ENDPOINT } from '../utils';
 
 export default {
   name: "Locations",
@@ -75,8 +74,8 @@ export default {
     }
   },
   async mounted () {
-    const response = await fetch(`${ENDPOINT}/locations`) // TODO: Replace this with organizers personal locations retrieved via custom function or view
-    let locations = await response.json()
+    const response = await this.$store.getters.fetchDefaults('/locations_by_owner')
+    const locations = await response.json()
     this.$store.commit('addLocations', locations)
     this.loaded = true
   },
