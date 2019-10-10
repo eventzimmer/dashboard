@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- add persistent login and renew
+- add logout button
 - added Auth0 redirect-based login
 - added Login page (landing)
 - added Organizer dashboard
 - added Profile component
 - added Locations component
 - added Sources component
-- add basic events chart
+- add basic events chart (currently disabled)

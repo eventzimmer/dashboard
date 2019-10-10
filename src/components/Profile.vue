@@ -1,9 +1,18 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <h6 class="text-uppercase mb-0">
-        Profil
-      </h6>
+      <div class="d-flex align-items-center">
+        <h6 class="text-uppercase mr-auto">
+          Profil
+        </h6>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-dark"
+          @click="$store.dispatch('logout')"
+        >
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
     </div>
     <div class="card-body">
       <div class="row">
