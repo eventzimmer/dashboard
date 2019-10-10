@@ -42,7 +42,7 @@
                 type="number"
                 min="-90"
                 max="90"
-                step="0.1"
+                step="any"
                 class="form-control"
                 required
               >
@@ -54,7 +54,7 @@
                 type="number"
                 min="-180"
                 max="180"
-                step="0.1"
+                step="any"
                 class="form-control"
                 required
               >
