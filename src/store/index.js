@@ -9,9 +9,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     locations: [],
-    sources: []
+    sources: [],
+    proposed_events: []
   },
   mutations: {
+    addProposedEvents(state, proposed_events) {
+      state.proposed_events.unshift(...proposed_events)
+    },
     addLocations (state, locations) {
       state.locations.unshift(...locations)
     },

@@ -7,6 +7,9 @@
             <div class="col-lg-6 mb-2">
               <Profile />
             </div>
+            <div class="col-lg-6 mb-2">
+              <ProposedEvents />
+            </div>
           </div>
           <div class="row mt-4">
             <div class="col-lg-6 mb-2">
@@ -67,13 +70,15 @@
 import Profile from './Profile.vue'
 import Locations from './Locations.vue'
 import Sources from './Sources.vue'
+import ProposedEvents from './ProposedEvents.vue'
 
 export default {
   name: "Organizer",
   components: {
     Profile,
     Locations,
-    Sources
+    Sources,
+    ProposedEvents
   }
 }
 </script>
