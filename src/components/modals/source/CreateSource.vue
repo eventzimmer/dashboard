@@ -91,7 +91,7 @@ export default {
       return this.$el.getElementsByTagName('form')[0].checkValidity()
     },
     aggregators () {
-      return ['iCal', 'Facebook']
+      return ['iCal', 'Facebook', 'RSS']
     },
     async createSource() {
       let response = await this.$store.getters.fetchDefaults(`/sources`, {
