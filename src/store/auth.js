@@ -1,5 +1,4 @@
 import auth0 from 'auth0-js'
-import authConfig from '../assets/auth_config.json'
 import { ENDPOINT } from '../utils';
 
 const fetchDefaults = require('fetch-defaults')
@@ -7,11 +6,11 @@ const fetchDefaults = require('fetch-defaults')
 export const CALLBACK_PATH = '/callback'
 
 const webAuth = new auth0.WebAuth({
-  domain: authConfig.domain,
+  domain: (process.env.VUE_APP_AUTH_DOMAIN !== undefined) ? process.env.VUE_APP_AUTH_DOMAIN : 'eventzimmer-staging.eu.auth0.com',
   redirectUri: `${window.location.origin}${CALLBACK_PATH}`,
   audience: 'api.eventzimmer.de',
   responseType: 'token id_token',
-  clientID: authConfig.clientId,
+  clientID: (process.env.VUE_APP_AUTH_CLIENTID !== undefined) ? process.env.VUE_APP_AUTH_CLIENTID : 'A2E2Zv4yHVgjZN1B3AR0bL2i7Ajq1tsE',
   scope: 'openid profile email'
 });
 
