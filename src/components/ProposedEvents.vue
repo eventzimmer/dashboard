@@ -1,5 +1,6 @@
 <template>
   <div class="card">
+    <Accept />
     <div class="card-header">
       <div class="d-flex align-items-center">
         <h6 class="text-uppercase mr-auto">
@@ -30,7 +31,8 @@
           <tbody>
             <tr
               v-for="proposed_event in paginatedProposedEvents()"
-              :key="proposed_event.name"
+              :key="proposed_event.url"
+              @click="acceptEvent(proposed_event.url)"
             >
               <td scope="row">
                 {{ proposed_event.name }}
@@ -52,10 +54,12 @@
 
 <script>
 import Pagination from './Pagination.vue'
+import Accept from './modals/proposed_events/Accept.vue'
 
 export default {
     name: "ProposedEvents",
   components: {
+      Accept,
     Pagination
   },
   data () {
@@ -73,6 +77,10 @@ export default {
   methods: {
     paginatedProposedEvents () {
       return this.$store.state.proposed_events.slice((this.page - 1) * 10, this.page * 10)
+    },
+    acceptEvent(url) {
+      this.$store.commit('updateEventURL', url)
+      $('#acceptProposedEventModal').modal('show') // eslint-disable-line
     }
   }
 }

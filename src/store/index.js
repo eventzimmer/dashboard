@@ -27,6 +27,9 @@ export default new Vuex.Store({
     },
     deleteSource (state, url) {
       state.sources = state.sources.filter((s) => s.url !== url)
+    },
+    deleteProposedEvent(state, url) {
+      state.proposed_events = state.proposed_events.filter((e) => e.url !== url)
     }
   },
   modules: {
