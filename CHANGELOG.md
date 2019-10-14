@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added RSS source type
 
 ### Changed
+- make table-layout fixed and break table cells for proposed events
 - use staging auth by default
 
 ## [0.2.0] - 13.10.2019

@@ -85,3 +85,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table td {
+  word-wrap: break-word;         /* All browsers since IE 5.5+ */
+  overflow-wrap: break-word;     /* Renamed property in CSS3 draft spec */
+}
+</style>
