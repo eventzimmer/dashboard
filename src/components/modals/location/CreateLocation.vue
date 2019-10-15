@@ -24,13 +24,30 @@
           </button>
         </div>
         <div class="modal-body">
+          <div class="input-group mb-2">
+            <input
+              v-model="address"
+              type="text"
+              placeholder="Addresse"
+              class="form-control"
+            >
+            <div class="input-group-append">
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                @click="fillLatitudeLongitude()"
+              >
+                Automatisch füllen
+              </button>
+            </div>
+          </div>
           <form>
             <div class="form-group">
               <label class="form-control-label text-uppercase">Name</label>
               <input
                 v-model="name"
                 type="text"
-                placeholder="Ort27"
+                placeholder="Ort"
                 class="form-control"
                 required
               >
@@ -90,6 +107,7 @@ export default {
   name: "CreateLocationModal",
   data () {
     return {
+      address: null,
       name: null,
       latitude: null,
       longitude: null
@@ -99,8 +117,20 @@ export default {
     valid () {
       return this.$el.getElementsByTagName('form')[0].checkValidity()
     },
+    async fillLatitudeLongitude () {
+      if (!this.address.length) {
+        throw new Error('Cannot query empty address')
+      }
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURI(this.address)}&format=json`)
+      const places = await response.json()
+      if ((response.status === 200) && places.length) {
+        const place = places.pop()
+        this.latitude = place.lat
+        this.longitude = place.lon
+      }
+    },
     async createLocation () {
-      let response = await this.$store.getters.fetchDefaults(`/locations`, {
+      const response = await this.$store.getters.fetchDefaults(`/locations`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -110,7 +140,11 @@ export default {
         body: JSON.stringify(this.$data)
       })
       if (response.status === 201) {
-        this.$store.commit('addLocations', [Object.assign({}, this.$data)])
+        this.$store.commit('addLocations', [{
+          name: this.name,
+          latitude: this.latitude,
+          longitude: this.longitude
+        }])
       }
     }
   }
