@@ -2,7 +2,7 @@
   <nav
     aria-label="Page navigation"
   >
-    <ul class="pagination">
+    <ul class="pagination flex-wrap">
       <li
         class="page-item"
         :class="{ 'disabled': (page === 1) }"

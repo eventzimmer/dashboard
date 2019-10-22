@@ -13,6 +13,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - make table-layout fixed and break table cells for proposed events
 - use staging auth by default
 
+### Fixed
+- added flex-wrap to pagination elements so they are responsive
+
 ## [0.2.0] - 13.10.2019
 ### Added
 - added proposed event accept functionality
