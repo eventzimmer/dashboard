@@ -69,7 +69,7 @@ export default {
       }
   },
   async mounted () {
-    const response = await this.$store.getters.fetchDefaults('/proposed_events_by_organizer')
+    const response = await this.$store.getters.fetchDefaults('/proposed_events_by_organizer?order=starts_at')
     const events = await response.json()
     this.$store.commit('addProposedEvents', events)
     this.loaded = true

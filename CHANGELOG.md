@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - added flex-wrap to pagination elements so they are responsive
+- sort proposed events by starts_at
 
 ## [0.2.0] - 13.10.2019
 ### Added
