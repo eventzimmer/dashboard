@@ -32,11 +32,16 @@ export default new Vuex.Store({
       state.proposed_events = state.proposed_events.filter((e) => e.url !== url)
     }
   },
+  getters: {
+    proposed_events(state, getters) {
+      return state.proposed_events.filter((event) => !getters.archivedEvents.has(event.url))
+    }
+  },
   modules: {
     auth,
     selection
   },
   plugins: [createPersistedState({
-    paths: ['auth']
+    paths: ['auth', 'selection.archivedEvents']
   })]
 })

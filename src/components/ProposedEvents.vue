@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     paginatedProposedEvents () {
-      return this.$store.state.proposed_events.slice((this.page - 1) * 10, this.page * 10)
+      return this.$store.getters.proposed_events.slice((this.page - 1) * 10, this.page * 10)
     },
     acceptEvent(url) {
       this.$store.commit('updateEventURL', url)
