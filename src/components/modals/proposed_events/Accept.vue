@@ -61,6 +61,14 @@
           >
             Eintragen
           </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-dismiss="modal"
+            @click="$store.commit('archiveEvent', $store.state.selection.eventURL)"
+          >
+            Archivieren
+          </button>
         </div>
       </div>
     </div>
